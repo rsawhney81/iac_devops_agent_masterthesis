@@ -1,0 +1,68 @@
+{
+    "workload_name":  "StreamFlix",
+    "application":  {
+                        "branch":  "build",
+                        "verify_content_contains":  "StreamFlix",
+                        "repository_url":  "https://github.com/devopsinsiders/StreamFlix.git",
+                        "publish_target":  "/var/www/html",
+                        "bootstrap_method":  "cloud-init"
+                    },
+    "azure":  {
+                  "region":  "eastus2",
+                  "subscription_id":  "f0ceba0a-0f02-4940-bc12-d5bf29e55282",
+                  "tenant_id":  "701ee46b-24e8-4814-a965-75a1fa0dba56",
+                  "zone":  1
+              },
+    "compute":  {
+                    "os_image":  {
+                                     "publisher":  "Canonical",
+                                     "version":  "latest",
+                                     "offer":  "0001-com-ubuntu-server-jammy",
+                                     "sku":  "22_04-lts-gen2"
+                                 },
+                    "admin_username":  "azureuser",
+                    "vm_size":  "Standard_E2s_v7"
+                },
+    "network":  {
+                    "public_ip":  true,
+                    "http_public":  true,
+                    "inbound_ports":  [
+                                          80,
+                                          22
+                                      ],
+                    "ssh_source_cidr":  "84.226.95.4/32"
+                },
+    "security":  {
+                     "ssh_restricted_to_operator_32":  true
+                 },
+    "terraform":  {
+                      "backend":  {
+                                      "container_name":  "tfstate",
+                                      "use_azuread_auth":  true,
+                                      "type":  "azurerm",
+                                      "key":  "streamflix-eastus2-20260617-185124.tfstate",
+                                      "resource_group_name":  "rg-tfstate",
+                                      "storage_account_name":  "tfs959443weu"
+                                  },
+                      "terraform_version":  "= 1.15.5",
+                      "provider_azurerm":  "= 4.14.0"
+                  },
+    "naming":  {
+                   "prefix":  "mythesis-streamflix-",
+                   "default_tags":  {
+                                        "ManagedBy":  "Terraform",
+                                        "Region":  "eastus2",
+                                        "Environment":  "Dev",
+                                        "CreatedDate":  "2026-06-17",
+                                        "Workload":  "StreamFlix",
+                                        "Project":  "MasterThesis"
+                                    }
+               },
+    "retention":  {
+                      "destroy_on_completion":  false
+                  },
+    "ci_cd":  {
+                  "workflow":  "deploy.yml",
+                  "required":  true
+              }
+}

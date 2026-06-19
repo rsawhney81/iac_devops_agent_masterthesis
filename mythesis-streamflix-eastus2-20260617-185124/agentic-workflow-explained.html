@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Multi-Agent IaC Orchestration - Workflow & Architecture</title>
+<style>
+:root{--ink:#1b2733;--accent:#0b4f8a;--line:#d6dde5;--bg:#f6f9fc;--orch:#0b4f8a;--agent:#2a7ab0;--gate:#1d7a46}
+*{box-sizing:border-box}
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,sans-serif;color:var(--ink);line-height:1.55;max-width:980px;margin:0 auto;padding:28px 22px}
+h1{color:var(--accent);font-size:1.55rem;margin:0 0 .2em}
+h2{color:var(--accent);font-size:1.16rem;margin:1.8em 0 .5em;border-bottom:2px solid #e7eff6;padding-bottom:5px}
+.sub{color:#5d6b78;margin:.2em 0 1.4em;font-size:.92rem}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.9rem}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#e7eff6}
+code{background:#eef3f8;padding:1px 5px;border-radius:4px;font-size:.85em}
+figure{margin:16px 0;text-align:center}
+figcaption{color:#5d6b78;font-size:.82rem;margin-top:6px}
+.diagram{width:100%;border:1px solid var(--line);border-radius:8px;background:#fff}
+</style></head><body>
+
+<h1>Multi-Agent IaC Orchestration - How the System Works</h1>
+<p class="sub">A "1 + 9" architecture: one central <strong>IaC Workflow Orchestrator</strong> coordinating nine specialised agents through a governed, human-in-the-loop pipeline. The application to deploy is an <em>input</em> to the system, not a fixed target - StreamFlix is the demonstrator payload.</p>
+
+<h2>1. Agent topology</h2>
+<figure>
+<svg class="diagram" viewBox="0 0 920 470" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,sans-serif">
+  <!-- Orchestrator -->
+  <rect x="360" y="20" width="200" height="56" rx="8" fill="#0b4f8a"/>
+  <text x="460" y="44" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">IaC Workflow</text>
+  <text x="460" y="62" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">Orchestrator</text>
+  <text x="460" y="92" fill="#5d6b78" font-size="11" text-anchor="middle">reads context.json + global canon; drives all phases; owns the finalization gate</text>
+
+  <!-- nine agents in a grid -->
+  <g font-size="11.5" text-anchor="middle">
+    <!-- row 1 -->
+    <rect x="20"  y="130" width="160" height="46" rx="7" fill="#eaf2f9" stroke="#2a7ab0"/>
+    <text x="100" y="150">Requirement</text><text x="100" y="166">Normalizer</text>
+    <rect x="200" y="130" width="160" height="46" rx="7" fill="#eaf2f9" stroke="#2a7ab0"/>
+    <text x="280" y="150">Architecture</text><text x="280" y="166">Mapper</text>
+    <rect x="380" y="130" width="160" height="46" rx="7" fill="#eaf2f9" stroke="#2a7ab0"/>
+    <text x="460" y="150">Module</text><text x="460" y="166">Discoverer</text>
+    <rect x="560" y="130" width="160" height="46" rx="7" fill="#eaf2f9" stroke="#2a7ab0"/>
+    <text x="640" y="150">Module</text><text x="640" y="166">Parameterizer</text>
+    <rect x="740" y="130" width="160" height="46" rx="7" fill="#eaf2f9" stroke="#2a7ab0"/>
+    <text x="820" y="150">Terraform</text><text x="820" y="166">Assembler</text>
+    <!-- row 2 -->
+    <rect x="110" y="200" width="160" height="46" rx="7" fill="#eaf2f9" stroke="#2a7ab0"/>
+    <text x="190" y="220">CI/CD</text><text x="190" y="236">Generator</text>
+    <rect x="290" y="200" width="160" height="46" rx="7" fill="#eaf2f9" stroke="#2a7ab0"/>
+    <text x="370" y="220">Validator &amp;</text><text x="370" y="236">Governor</text>
+    <rect x="470" y="200" width="160" height="46" rx="7" fill="#eaf2f9" stroke="#2a7ab0"/>
+    <text x="550" y="220">POC Documentary</text><text x="550" y="236">Agent</text>
+    <rect x="650" y="200" width="160" height="46" rx="7" fill="#eaf2f9" stroke="#2a7ab0"/>
+    <text x="730" y="220">Knowledge Mgmt</text><text x="730" y="236">Agent</text>
+  </g>
+  <!-- connectors -->
+  <g stroke="#9bb4c9" stroke-width="1.5" fill="none">
+    <path d="M430 76 C 300 100, 120 110, 100 130"/>
+    <path d="M440 76 C 360 100, 290 110, 280 130"/>
+    <path d="M460 76 L 460 130"/>
+    <path d="M480 76 C 560 100, 630 110, 640 130"/>
+    <path d="M490 76 C 650 100, 800 110, 820 130"/>
+    <path d="M450 76 C 300 170, 200 185, 190 200"/>
+    <path d="M455 76 C 380 175, 372 188, 370 200"/>
+    <path d="M470 76 C 540 175, 548 188, 550 200"/>
+    <path d="M485 76 C 680 175, 728 188, 730 200"/>
+  </g>
+  <!-- canon + context -->
+  <rect x="300" y="300" width="320" height="40" rx="7" fill="#eef8f1" stroke="#1d7a46"/>
+  <text x="460" y="325" font-size="12" text-anchor="middle" fill="#1d7a46">Global canon (R01-R24) + context.json &mdash; shared memory</text>
+  <path d="M460 246 L 460 300" stroke="#1d7a46" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+  <text x="460" y="360" font-size="10.5" text-anchor="middle" fill="#5d6b78">canon lives outside any project, so lessons carry across deployments</text>
+
+  <!-- finalization gate -->
+  <rect x="250" y="395" width="420" height="44" rx="7" fill="#0b4f8a"/>
+  <text x="460" y="413" fill="#fff" font-size="12.5" font-weight="700" text-anchor="middle">Terminal Finalization Gate (R21-R24)</text>
+  <text x="460" y="430" fill="#cfe0ee" font-size="10.5" text-anchor="middle">run is "done" only when metrics, documentary, canon write &amp; context re-emit all exist</text>
+</svg>
+<figcaption>Figure A. The 1+9 agent topology. One orchestrator coordinates nine specialised agents; all share a global canon and per-run context, and every run must pass the terminal finalization gate before completion.</figcaption>
+</figure>
+
+<h2>2. What each agent does</h2>
+<table>
+<tr><th>Agent</th><th>Responsibility</th></tr>
+<tr><td><strong>IaC Workflow Orchestrator</strong></td><td>Central coordinator. Seeds the global canon, runs preflight (auth, SKU, version, role checks), drives each phase in order, manages human-in-the-loop approvals, and enforces the terminal finalization gate.</td></tr>
+<tr><td>Requirement Normalizer</td><td>Turns the natural-language request + <code>context.json</code> into a validated specification, and emits a per-request requirement checklist (canon instantiated against this request). Three bounded passes: extraction, completion, feasibility.</td></tr>
+<tr><td>Architecture Mapper</td><td>Produces the architecture model and the PlantUML source/diagram for the requested topology.</td></tr>
+<tr><td>Module Discoverer</td><td>Selects the Terraform modules or raw resources needed to realise the architecture.</td></tr>
+<tr><td>Module Parameterizer</td><td>Maps specification + context values onto module inputs; produces the parameterised configuration (including an application-deploying bootstrap).</td></tr>
+<tr><td>Terraform Assembler</td><td>Generates the deployable Terraform files and cloud-init that clones and serves the actual application - not merely a web server.</td></tr>
+<tr><td>CI/CD Generator</td><td>Generates the GitHub Actions workflow (OIDC, keyless auth) for the pipeline.</td></tr>
+<tr><td>Validator &amp; Governor</td><td>Runs fmt/init/validate/plan/apply, enforces governance, and reports errors and fixes to the Knowledge Management Agent.</td></tr>
+<tr><td>POC Documentary Agent</td><td>Assembles the evidence package (this report's sibling) from measured artifacts; embeds the architecture PNG; reports only measured metrics, marking uninstrumented values null.</td></tr>
+<tr><td>Knowledge Management Agent</td><td>Appends durable lessons to the global canon so future runs start informed; maintains the repo-local error knowledge base.</td></tr>
+</table>
+
+<h2>3. The deployment workflow, end to end</h2>
+<figure>
+<svg class="diagram" viewBox="0 0 920 250" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,sans-serif" font-size="11">
+  <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5d6b78"/></marker></defs>
+  <g text-anchor="middle">
+    <rect x="10"  y="40" width="92" height="40" rx="6" fill="#0b4f8a"/><text x="56" y="64" fill="#fff">Preflight</text>
+    <rect x="118" y="40" width="100" height="40" rx="6" fill="#eaf2f9" stroke="#2a7ab0"/><text x="168" y="58">Normalize +</text><text x="168" y="72">checklist</text>
+    <rect x="234" y="40" width="100" height="40" rx="6" fill="#eaf2f9" stroke="#2a7ab0"/><text x="284" y="58">Architecture</text><text x="284" y="72">+ diagram</text>
+    <rect x="350" y="20" width="80" height="34" rx="6" fill="#1d7a46"/><text x="390" y="41" fill="#fff">APPROVE</text>
+    <rect x="350" y="62" width="80" height="34" rx="6" fill="#eaf2f9" stroke="#2a7ab0"/><text x="390" y="83">Discover</text>
+    <rect x="446" y="40" width="96" height="40" rx="6" fill="#eaf2f9" stroke="#2a7ab0"/><text x="494" y="58">Parameterize</text><text x="494" y="72">+ assemble</text>
+    <rect x="558" y="40" width="92" height="40" rx="6" fill="#eaf2f9" stroke="#2a7ab0"/><text x="604" y="58">CI/CD +</text><text x="604" y="72">validate</text>
+    <rect x="666" y="40" width="92" height="40" rx="6" fill="#0b4f8a"/><text x="712" y="58" fill="#fff">Apply +</text><text x="712" y="72" fill="#fff">reachability</text>
+    <rect x="774" y="40" width="120" height="40" rx="6" fill="#1d7a46"/><text x="834" y="58" fill="#fff">Finalization</text><text x="834" y="72" fill="#fff">gate R21-R24</text>
+  </g>
+  <g stroke="#5d6b78" stroke-width="1.4" fill="none" marker-end="url(#ar)">
+    <path d="M102 60 L116 60"/><path d="M218 60 L232 60"/><path d="M334 55 L348 40"/>
+    <path d="M334 65 L348 79"/><path d="M430 60 L444 60"/><path d="M542 60 L556 60"/>
+    <path d="M650 60 L664 60"/><path d="M758 60 L772 60"/>
+  </g>
+  <text x="460" y="140" text-anchor="middle" fill="#8a5a00" font-size="11">Validation may loop on correction (this run: 3 corrections - SSH key x2, Terraform syntax) before apply succeeds</text>
+  <path d="M712 82 C 600 130, 600 130, 494 82" stroke="#8a5a00" stroke-width="1.3" fill="none" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+  <text x="460" y="185" text-anchor="middle" fill="#1d7a46" font-size="11">Finalization writes: validation.json, metrics.json, documentary HTML, canon lessons, re-emitted context.json</text>
+  <text x="460" y="210" text-anchor="middle" fill="#5d6b78" font-size="10.5">Human-in-the-loop approval gates (green) pause the pipeline for operator confirmation</text>
+</svg>
+<figcaption>Figure B. The end-to-end deployment flow. Green blocks are human-in-the-loop approval gates; the orchestrator cannot report completion until the finalization gate's artifacts all exist.</figcaption>
+</figure>
+
+<h2>4. Design principles</h2>
+<table>
+<tr><th>Principle</th><th>How it is realised</th></tr>
+<tr><td>Application-agnostic</td><td>The app (repo, branch, bootstrap) comes from the request and <code>context.json</code>; nothing is hardcoded to a specific application.</td></tr>
+<tr><td>Explicit specification</td><td>The Requirement Normalizer emits a checkable per-request specification (unambiguous, feasible, traceable, machine-checkable) - distinct from unstructured prompting.</td></tr>
+<tr><td>Cheap-zone validation</td><td>Feasibility checks run before any resource exists, so failures cost nothing to recover.</td></tr>
+<tr><td>Governed completion</td><td>The terminal finalization gate makes evidence, verification, and learning mandatory - "VM is up" is not a stopping condition.</td></tr>
+<tr><td>Cross-run learning</td><td>The Knowledge Management Agent writes durable lessons to a global canon that travels across projects.</td></tr>
+</table>
+
+</body></html>

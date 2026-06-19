@@ -1,0 +1,12 @@
+[
+  {
+    "locations": "eastus2",
+    "name": "Standard_E2s_v7",
+    "restrictions": [],
+    "zones": [
+      "3",
+      "1",
+      "2"
+    ]
+  }
+]

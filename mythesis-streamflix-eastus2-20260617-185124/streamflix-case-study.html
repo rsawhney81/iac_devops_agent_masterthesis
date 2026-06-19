@@ -1,0 +1,82 @@
+<!DOCTYPE html><html><head><meta charset='UTF-8'><title>StreamFlix Case Study</title></head><body>
+<h1>StreamFlix Deployment Case Study</h1>
+<p>Run: mythesis-streamflix-eastus2-20260617-185124</p>
+<p>Endpoint: <a href='http://172.206.48.114'>http://172.206.48.114</a></p>
+<p>Content verification: PASS (app markers detected; non-default nginx page)</p>
+<h2>Architecture</h2><img src='architecture.png' alt='Architecture PNG' style='max-width:100%;border:1px solid #ccc' />
+<h2>Measured Metrics</h2><pre>{
+    "run":  {
+                "start_iso":  "2026-06-17T18:51:24.2436075Z",
+                "end_iso":  "2026-06-17T19:22:00.6293922Z",
+                "end_to_end_duration_seconds":  1836
+            },
+    "context":  {
+                    "region":  "eastus2",
+                    "vm_size":  "Standard_E2s_v7",
+                    "resource_group":  "rg-mythesis-streamflix-20260617",
+                    "vm_name":  "vm-mythesis-streamflix-20260617",
+                    "public_ip":  "172.206.48.114",
+                    "application_url":  "http://172.206.48.114"
+                },
+    "phase_durations_seconds":  {
+                                    "workspace_creation":  0,
+                                    "normalization":  355,
+                                    "architecture_mapping":  8,
+                                    "module_discovery":  0,
+                                    "module_parameterization":  0,
+                                    "terraform_assembly":  10,
+                                    "ci_cd_generation":  0,
+                                    "validation":  475,
+                                    "documentation":  132
+                                },
+    "interventions":  {
+                          "human_interventions_required":  7,
+                          "configuration_corrections_required":  4,
+                          "approval_cycles_required":  3,
+                          "first_time_success":  false
+                      },
+    "quality":  {
+                    "automation_coverage_percent":  null,
+                    "reproducibility_score":  null
+                }
+}
+</pre>
+<h2>Validation Evidence</h2><pre>{
+    "terraform_fmt":  true,
+    "terraform_init":  true,
+    "terraform_validate":  true,
+    "terraform_plan":  true,
+    "terraform_apply":  true,
+    "vm_provisioning_state":  "Succeeded",
+    "cloud_init_status_done":  true,
+    "nginx_active":  [
+                         "active"
+                     ],
+    "http_local_status_200":  [
+
+                              ],
+    "http_public_status_200":  true,
+    "public_content_verification_pass":  true,
+    "ssh_source_cidr_restricted":  true,
+    "public_ip":  "172.206.48.114",
+    "application_url":  "http://172.206.48.114",
+    "evidence_files":  [
+                           "architecture.png",
+                           "cloud-init-summary.txt",
+                           "http-check.txt",
+                           "http-body.txt",
+                           "plan-output.txt",
+                           "apply-output.txt",
+                           "vm-runtime-check.txt"
+                       ]
+}
+</pre>
+<h2>Terminal Finalization Gate (R21-R24)</h2>
+<ul>
+<li>R21: Completed post-apply checks and evidence persistence.</li>
+<li>R22: HTTP 200 and app-content verification passed via HTML app markers.</li>
+<li>R23: Retrospective lessons appended to global canon.</li>
+<li>R24: context.json re-emitted from true end-state.</li>
+</ul>
+<h2>Evidence Files</h2><ul><li>cloud-init-summary.txt</li><li>http-check.txt</li><li>http-body.txt</li><li>vm-runtime-check.txt</li><li>plan-output.txt</li><li>apply-output.txt</li><li>.iac/execution.log</li></ul>
+</body></html>

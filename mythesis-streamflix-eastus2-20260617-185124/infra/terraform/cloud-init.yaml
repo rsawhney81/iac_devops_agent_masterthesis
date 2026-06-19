@@ -1,0 +1,48 @@
+Content-Type: multipart/mixed; boundary="==BOUNDARY=="
+MIME-Version: 1.0
+
+--==BOUNDARY==
+Content-Type: text/cloud-config; charset="us-ascii"
+
+#cloud-config
+package_update: true
+packages:
+  - git
+  - nginx
+  - rsync
+write_files:
+  - path: /opt/streamflix/bootstrap.sh
+    permissions: '0755'
+    owner: root:root
+    content: |
+      #!/usr/bin/env bash
+      set -euo pipefail
+      LOG=/var/log/streamflix-bootstrap.log
+      exec > >(tee -a "$LOG") 2>&1
+      echo "[bootstrap] start $(date -u +%FT%TZ)"
+      systemctl enable nginx
+      systemctl start nginx
+      rm -rf /opt/streamflix
+      git clone --branch ${app_branch} --single-branch ${app_repo} /opt/streamflix
+      COMMIT_SHA=$(git -C /opt/streamflix rev-parse HEAD)
+      echo "COMMIT_SHA=$COMMIT_SHA" | tee /var/log/streamflix-commit.txt
+      if [ -d /opt/streamflix/dist ]; then
+        rsync -a --delete /opt/streamflix/dist/ /var/www/html/
+      elif [ -d /opt/streamflix/build ]; then
+        rsync -a --delete /opt/streamflix/build/ /var/www/html/
+      else
+        rsync -a --delete /opt/streamflix/ /var/www/html/
+      fi
+      chown -R www-data:www-data /var/www/html
+      systemctl restart nginx
+      if grep -Riq "streamflix" /var/www/html; then
+        echo "CONTENT_VERIFICATION=PASS" | tee /var/log/streamflix-content-check.txt
+      else
+        echo "CONTENT_VERIFICATION=FAIL" | tee /var/log/streamflix-content-check.txt
+        exit 14
+      fi
+      echo "[bootstrap] done $(date -u +%FT%TZ)"
+runcmd:
+  - [ bash, /opt/streamflix/bootstrap.sh ]
+
+--==BOUNDARY==--

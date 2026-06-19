@@ -1,0 +1,8 @@
+﻿Enable succeeded: 
+[stdout]
+active
+200
+status: done
+
+[stderr]
+

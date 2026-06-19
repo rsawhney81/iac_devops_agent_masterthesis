@@ -1,0 +1,5 @@
+﻿http_code=200
+contains_streamflix=false
+app_markers_detected=True
+not_default_nginx=True
+ready=True

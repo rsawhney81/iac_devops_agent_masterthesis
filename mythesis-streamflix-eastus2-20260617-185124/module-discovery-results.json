@@ -1,0 +1,16 @@
+{
+  "approach": "raw_azurerm_resources",
+  "rationale": "AVM schema drift risk avoided; raw azurerm provides deterministic control and exact provider pinning.",
+  "provider": { "source": "hashicorp/azurerm", "version": "= 4.14.0" },
+  "resources": [
+    "azurerm_resource_group",
+    "azurerm_virtual_network",
+    "azurerm_subnet",
+    "azurerm_network_security_group",
+    "azurerm_network_security_rule",
+    "azurerm_public_ip",
+    "azurerm_network_interface",
+    "azurerm_network_interface_security_group_association",
+    "azurerm_linux_virtual_machine"
+  ]
+}

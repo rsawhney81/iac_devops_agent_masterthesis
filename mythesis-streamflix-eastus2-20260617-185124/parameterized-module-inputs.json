@@ -1,0 +1,19 @@
+{
+  "terraform_required_version": "= 1.15.5",
+  "provider_azurerm_version": "= 4.14.0",
+  "region": "eastus2",
+  "zone": 1,
+  "vm_size": "Standard_E2s_v7",
+  "admin_username": "azureuser",
+  "ssh_source_cidr": "84.226.95.4/32",
+  "app_repository": "https://github.com/devopsinsiders/StreamFlix.git",
+  "app_branch": "build",
+  "publish_root": "/var/www/html",
+  "backend": {
+    "storage_account_name": "tfs959443weu",
+    "container_name": "tfstate",
+    "resource_group_name": "rg-tfstate",
+    "key": "streamflix-eastus2-20260617-185124.tfstate",
+    "use_azuread_auth": true
+  }
+}

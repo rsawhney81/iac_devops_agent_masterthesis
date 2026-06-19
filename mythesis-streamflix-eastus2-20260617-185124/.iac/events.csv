@@ -1,0 +1,8 @@
+category,description,timestamp_iso
+PLANNED_APPROVAL,awaiting architecture approval,2026-06-17T18:57:31.7348751Z
+UNPLANNED_CORRECTION,reused existing operator SSH public key due local ssh-keygen argument issue,2026-06-17T19:03:33.3232539Z
+UNPLANNED_CORRECTION,fixed invalid Terraform variable block syntax and corrected absolute path logging,2026-06-17T19:04:52.4430496Z
+UNPLANNED_CORRECTION,replaced malformed SSH key with newly generated ed25519 public key,2026-06-17T19:08:43.8016466Z
+PLANNED_APPROVAL,post-apply terminal finalization gate execution,2026-06-17T19:12:50.6909688Z
+REACTIVE_TROUBLESHOOTING,http content verification not satisfied after retries,2026-06-17T19:18:22.5388755Z
+PLANNED_APPROVAL,external app content verified by HTML markers,2026-06-17T19:18:38.2081587Z

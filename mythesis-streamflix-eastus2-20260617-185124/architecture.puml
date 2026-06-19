@@ -1,0 +1,45 @@
+@startuml
+title StreamFlix Azure Architecture (eastus2)
+
+left to right direction
+skinparam shadowing false
+
+actor "Operator Workstation" as operator
+cloud "GitHub Repo\nhttps://github.com/devopsinsiders/StreamFlix\nbranch: build" as github
+cloud "Internet" as internet
+
+package "Azure / eastus2" {
+  frame "Resource Group" as rg {
+    node "Virtual Network" as vnet {
+      node "Subnet" as subnet
+    }
+
+    component "NSG\n- Allow TCP 22 from 84.226.95.4/32\n- Allow TCP 80 from Internet" as nsg
+    component "Public IP" as pip
+    component "NIC" as nic
+    node "Linux VM\nUbuntu 22.04 LTS\nSize: Standard_E2s_v7\nZone: 1" as vm
+  }
+}
+
+vnet -- subnet
+subnet -- nic
+nsg -- nic : associated
+pip -- nic : associated
+nic -- vm : attached
+
+operator --> pip : SSH 22
+internet --> pip : HTTP 80
+vm --> github : cloud-init git clone (build)
+
+note right of vm
+cloud-init:
+- apt install nginx git
+- clone StreamFlix (branch build)
+- publish app to /var/www/html
+end note
+
+note bottom of pip
+Endpoint: http://<public-ip>
+end note
+
+@enduml

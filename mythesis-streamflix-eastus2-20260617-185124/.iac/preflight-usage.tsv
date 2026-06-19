@@ -1,0 +1,198 @@
+lowPriorityCores	Total Regional Low-priority vCPUs	0	3
+cores	Total Regional vCPUs	0	10
+dedicatedVCpus	Dedicated vCPUs	0	3000
+basicAFamily	Basic A Family vCPUs	0	10
+standardA0_A7Family	Standard A0-A7 Family vCPUs	0	10
+standardA8_A11Family	Standard A8-A11 Family vCPUs	0	10
+standardAv2Family	Standard Av2 Family vCPUs	0	10
+standardBSFamily	Standard BS Family vCPUs	0	10
+standardBasv2Family	Standard Basv2 Family vCPUs	0	0
+standardBsv2Family	Standard Bsv2 Family vCPUs	0	0
+standardBpsv2Family	Standard Bpsv2 Family vCPUs	0	0
+standardDFamily	Standard D Family vCPUs	0	10
+standardDv2Family	Standard Dv2 Family vCPUs	0	10
+standardDv2PromoFamily	Standard Dv2 Promo Family vCPUs	0	10
+StandardDadsv7Family	Standard Dadsv7 Family vCPUs	0	10
+StandardDaldsv7Family	Standard Daldsv7 Family vCPUs	0	10
+StandardDalsv7Family	Standard Dalsv7 Family vCPUs	0	10
+StandardDasv7Family	Standard Dasv7 Family vCPUs	0	10
+StandardDdsv6Family	Standard Ddsv6 Family vCPUs	0	10
+StandardDdsv7Family	Standard Ddsv7 Family vCPUs	0	10
+StandardDldsv6Family	Standard Dldsv6 Family vCPUs	0	10
+StandardDldsv7Family	Standard Dldsv7 Family vCPUs	0	10
+StandardDlsv6Family	Standard Dlsv6 Family vCPUs	0	10
+StandardDlsv7Family	Standard Dlsv7 Family vCPUs	0	10
+StandardDsv6Family	Standard Dsv6 Family vCPUs	0	10
+StandardDsv7Family	Standard Dsv7 Family vCPUs	0	10
+standardDADSv5Family	Standard DADSv5 Family vCPUs	0	0
+standardDadv6Family	standard Dadv6 Family vCPUs	0	10
+standardDaldv6Family	standard Daldv6 Family vCPUs	0	10
+standardDalv6Family	standard Dalv6 Family vCPUs	0	10
+standardDASv4Family	Standard DASv4 Family vCPUs	0	10
+standardDASv5Family	Standard DASv5 Family vCPUs	0	0
+standardDav6Family	standard Dav6 Family vCPUs	0	10
+standardDAv4Family	Standard DAv4 Family vCPUs	0	0
+standardDDSv4Family	Standard DDSv4 Family vCPUs	0	10
+standardDDSv5Family	Standard DDSv5 Family vCPUs	0	0
+standardDDv4Family	Standard DDv4 Family vCPUs	0	10
+standardDDv5Family	Standard DDv5 Family vCPUs	0	0
+standardDLDSv5Family	Standard DLDSv5 Family vCPUs	0	0
+standardDLSv5Family	Standard DLSv5 Family vCPUs	0	0
+standardDPDSv5Family	Standard DPDSv5 Family vCPUs	0	0
+StandardDpdsv6Family	Standard Dpdsv6 Family vCPUs	0	10
+standardDPLDSv5Family	Standard DPLDSv5 Family vCPUs	0	0
+StandardDpldsv6Family	Standard Dpldsv6 Family vCPUs	0	10
+standardDPLSv5Family	Standard DPLSv5 Family vCPUs	0	0
+StandardDplsv6Family	Standard Dplsv6 Family vCPUs	0	10
+standardDPSv5Family	Standard DPSv5 Family vCPUs	0	0
+StandardDpsv6Family	Standard Dpsv6 Family vCPUs	0	10
+standardDSv3Family	Standard DSv3 Family vCPUs	0	10
+standardDSv4Family	Standard DSv4 Family vCPUs	0	10
+standardDSv5Family	Standard DSv5 Family vCPUs	0	0
+standardDv3Family	Standard Dv3 Family vCPUs	0	10
+standardDv4Family	Standard Dv4 Family vCPUs	0	10
+standardDv5Family	Standard Dv5 Family vCPUs	0	0
+standardDCADCCV5Family	standard DCADCCV5 Family vCPUs	0	0
+standardDCADSv5Family	Standard DCADSv5 Family vCPUs	0	0
+standardDCadsv6Family	Standard DCadsv6 Family vCPUs	0	0
+standardDCACCV5Family	standard DCACCV5 Family vCPUs	0	0
+standardDCASv5Family	Standard DCASv5 Family vCPUs	0	0
+standardDCasv6Family	Standard DCasv6 Family vCPUs	0	0
+standardDDCSv3Family	Standard DDCSv3 Family vCPUs	0	0
+standardDCEDV5Family	Standard DCEDV5 Family vCPUs	0	0
+standardDCEV5Family	Standard DCEV5 Family vCPUs	0	0
+standardDCSv3Family	Standard DCSv3 Family vCPUs	0	0
+standardDCSv2Family	Standard DCSv2 Family vCPUs	0	8
+standardDCSFamily	Standard DCS Family vCPUs	0	8
+standardDSFamily	Standard DS Family vCPUs	0	10
+standardDSv2Family	Standard DSv2 Family vCPUs	0	10
+standardDSv2PromoFamily	Standard DSv2 Promo Family vCPUs	0	10
+standardEIDSv5Family	Standard EIDSv5 Family vCPUs	0	0
+standardEIDv5Family	Standard EIDv5 Family vCPUs	0	0
+standardEISv5Family	Standard EISv5 Family vCPUs	0	0
+standardEIv5Family	Standard EIv5 Family vCPUs	0	0
+standardEIADSv5Family	Standard EIADSv5 Family vCPUs	0	0
+standardEIASv5Family	Standard EIASv5 Family vCPUs	0	0
+standardEIBDSv5Family	Standard EIBDSv5 Family vCPUs	0	0
+standardEIBSv5Family	Standard EIBSv5 Family vCPUs	0	0
+StandardEadsv7Family	Standard Eadsv7 Family vCPUs	0	10
+StandardEasv7Family	Standard Easv7 Family vCPUs	0	10
+StandardEdsv6Family	Standard Edsv6 Family vCPUs	0	10
+StandardEsv6Family	Standard Esv6 Family vCPUs	0	10
+StandardEdsv7Family	Standard Edsv7 Family vCPUs	0	10
+StandardEsv7Family	Standard Esv7 Family vCPUs	0	10
+standardEADSv5Family	Standard EADSv5 Family vCPUs	0	0
+standardEASv4Family	Standard EASv4 Family vCPUs	0	10
+standardEASv5Family	Standard EASv5 Family vCPUs	0	0
+standardEDSv4Family	Standard EDSv4 Family vCPUs	0	10
+standardEDSv5Family	Standard EDSv5 Family vCPUs	0	0
+standardESv3Family	Standard ESv3 Family vCPUs	0	10
+standardESv4Family	Standard ESv4 Family vCPUs	0	0
+standardESv5Family	Standard ESv5 Family vCPUs	0	0
+standardEadv6Family	standard Eadv6 Family vCPUs	0	10
+standardEav6Family	standard Eav6 Family vCPUs	0	10
+standardEAv4Family	Standard EAv4 Family vCPUs	0	0
+standardEBDSv5Family	Standard EBDSv5 Family vCPUs	0	10
+standardEBSv5Family	Standard EBSv5 Family vCPUs	0	10
+standardEDv4Family	Standard EDv4 Family vCPUs	0	0
+standardEDv5Family	Standard EDv5 Family vCPUs	0	0
+standardEPDSv5Family	Standard EPDSv5 Family vCPUs	0	0
+StandardEpdsv6Family	Standard Epdsv6 Family vCPUs	0	10
+standardEPSv5Family	Standard EPSv5 Family vCPUs	0	0
+StandardEpsv6Family	Standard Epsv6 Family vCPUs	0	10
+standardEv3Family	Standard Ev3 Family vCPUs	0	10
+standardEv4Family	Standard Ev4 Family vCPUs	0	10
+standardEv5Family	Standard Ev5 Family vCPUs	0	0
+standardEISv3Family	Standard EISv3 Family vCPUs	0	10
+standardEIv3Family	Standard EIv3 Family vCPUs	0	10
+standardXEIDSv4Family	Standard EIDSv4 Family vCPUs	0	0
+standardXEISv4Family	Standard XEISv4 Family vCPUs	0	0
+standardEIASv4Family	Standard EIASv4 Family vCPUs	0	0
+standardECEDV5Family	Standard ECEDV5 Family vCPUs	0	0
+standardECEV5Family	Standard ECEV5 Family vCPUs	0	0
+standardECADCCV5Family	standard ECADCCV5 Family vCPUs	0	0
+standardECADSv5Family	Standard ECADSv5 Family vCPUs	0	0
+standardECadsv6Family	Standard ECadsv6 Family vCPUs	0	0
+standardECACCV5Family	standard ECACCV5 Family vCPUs	0	0
+standardECASv5Family	Standard ECASv5 Family vCPUs	0	0
+standardECasv6Family	Standard ECasv6 Family vCPUs	0	0
+standardECIADSv5Family	Standard ECIADSv5 Family vCPUs	0	0
+standardECIASv5Family	Standard ECIASv5 Family vCPUs	0	0
+standardFFamily	Standard F Family vCPUs	0	10
+StandardFamdsv7Family	Standard Famdsv7 Family vCPUs	0	10
+StandardFamsv7Family	Standard Famsv7 Family vCPUs	0	10
+StandardFadsv7Family	Standard Fadsv7 Family vCPUs	0	10
+StandardFaldsv7Family	Standard Faldsv7 Family vCPUs	0	10
+StandardFalsv6Family	Standard Falsv6 Family vCPUs	0	10
+StandardFalsv7Family	Standard Falsv7 Family vCPUs	0	10
+StandardFamsv6Family	Standard Famsv6 Family vCPUs	0	10
+StandardFasv6Family	Standard Fasv6 Family vCPUs	0	10
+StandardFasv7Family	Standard Fasv7 Family vCPUs	0	10
+standardFSFamily	Standard FS Family vCPUs	0	10
+standardFSv2Family	Standard FSv2 Family vCPUs	0	10
+StandardFXmdsv2Family	Standard FXmdsv2 Family vCPUs	0	10
+StandardFXmsv2Family	Standard FXmsv2 Family vCPUs	0	10
+standardFXMDVSFamily	Standard FXMDVS Family vCPUs	0	0
+standardGFamily	Standard G Family vCPUs	0	10
+standardGSFamily	Standard GS Family vCPUs	0	10
+standardHFamily	Standard H Family vCPUs	0	8
+standardHPromoFamily	Standard H Promo Family vCPUs	0	8
+standardHBrsv2Family	Standard HBrsv2 Family vCPUs	0	0
+standardHBv3Family	Standard HBv3 Family vCPUs	0	0
+standardHBv4Family	Standard HBv4 Family vCPUs	0	0
+standardHBv5Family	Standard Hbv5 Family vCPUs	0	0
+standardHBSFamily	Standard HBS Family vCPUs	0	0
+standardHCSFamily	Standard HCS Family vCPUs	0	0
+standardHXFamily	Standard HX Family vCPUs	0	0
+internalNDMSv1Family	InternalNDM Sv 1 Family vCPUs	0	10
+standardLaosv4Family	Standard Laosv4 Family vCPUs	0	10
+standardLASv3Family	Standard LASv3 Family vCPUs	0	0
+standardLasv4Family	Standard Lasv 4 Family vCPUs	0	10
+standardLSFamily	Standard LS Family vCPUs	0	10
+standardLSv2Family	Standard LSv2 Family vCPUs	0	10
+standardLSv3Family	Standard LSv3 Family vCPUs	0	0
+standardLsv4Family	Standard Lsv 4 Family vCPUs	0	10
+standardMSFamily	Standard MS Family vCPUs	0	0
+StandardMBDSMediumMemoryv3Family	Standard MBDSMediumMemoryv3 Family vCPUs	0	10
+StandardMBSMediumMemoryv3Family	Standard MBSMediumMemoryv3 Family vCPUs	0	10
+standardMDSMediumMemoryv2Family	Standard MDSMediumMemoryv2 Family vCPUs	0	0
+standardMSMediumMemoryv2Family	Standard MSMediumMemoryv2 Family vCPUs	0	0
+standardMDSMediumMemoryv3Family	StandardMDS Medium Memoryv3 Family vCPUs	0	0
+standardMSMediumMemoryv3Family	StandardMS Medium Memoryv3 Family vCPUs	0	0
+standardMIDSMediumMemoryv2Family	Standard MIDSMediumMemoryv2 Family vCPUs	0	0
+standardMISMediumMemoryv2Family	Standard MISMediumMemoryv2 Family vCPUs	0	0
+standardMSv2Family	Standard MSv2 Family vCPUs	0	0
+standardMDSHighMemoryv3Family	StandardMDS High Memoryv3 Family vCPUs	0	0
+standardMSHighMemoryv3Family	StandardMS High Memoryv3 Family vCPUs	0	0
+standardMIDSHighMemoryv3Family	StandardMIDS High Memoryv3 Family vCPUs	0	0
+standardMISHighMemoryv3Family	StandardMIS High Memoryv3 Family vCPUs	0	0
+standardNCFamily	Standard NC Family vCPUs	0	12
+standardNCSv2Family	Standard NCSv2 Family vCPUs	0	0
+standardNCSv3Family	Standard NCSv3 Family vCPUs	0	0
+standardNCPromoFamily	Standard NC Promo Family vCPUs	0	12
+StandardNCADSA10v4Family	Standard NCADSA10v4 Family vCPUs	0	0
+Standard NCASv3_T4 Family	Standard NCASv3_T4 Family vCPUs	0	0
+StandardNCADSA100v4Family	Standard NCADS_A100_v4 Family vCPUs	0	0
+StandardNCadsH100v5Family	Standard NCadsH100v5 Family vCPUs	0	0
+StandardNCCads2023Family	Standard NCCads2023 Family vCPUs	0	0
+standardNDISRGB300G5V6Family	Standardndisrgb300g5v6family vCPUs	0	0
+standardNDISRGB300V6Family	Standard NDISR GB300V6 Family vCPUs	0	0
+standardNDISRGB200V6NDRFamily	StandardNDISRGB200V6NDRFamily vCPUs	0	0
+standardNDSFamily	Standard NDS Family vCPUs	0	0
+standardNDSv2Family	Standard NDSv2 Family vCPUs	0	0
+standardNDSv3Family	Standard NDSv3 Family vCPUs	0	0
+standard NDAMSv4_A100Family	Standard NDAMSv4_A100Family vCPUs	0	0
+Standard NDASv4_A100 Family	Standard NDASv4_A100 Family vCPUs	0	0
+standardNDSH100v5Family	Standard NDSH100v5 Family vCPUs	0	0
+standardNDISRH200V5Family	StandardNDISRH200V5Family vCPUs	0	0
+standardNDISv5MI300XFamily	StandardNDI Sv 5MI300X Family vCPUs	0	0
+StandardNGADSV620v1Family	Standard NGADSV620v1 Family vCPUs	0	0
+standardNPSFamily	Standard NPS Family vCPUs	0	0
+StandardNVADSA10v5Family	Standard NVADSA10v5 Family vCPUs	0	0
+standardNVFamily	Standard NV Family vCPUs	0	12
+StandardNVadsV710v5Family	Standard NVadsV710v5 Family vCPUs	0	0
+standardNVSv2Family	Standard NVSv2 Family vCPUs	0	0
+standardNVSv3Family	Standard NVSv3 Family vCPUs	0	0
+standardNVPromoFamily	Standard NV Promo Family vCPUs	0	12
+standardNVSv4Family	Standard NVSv4 Family vCPUs	0	8
+standardPBSFamily	Standard PBS Family vCPUs	0	6

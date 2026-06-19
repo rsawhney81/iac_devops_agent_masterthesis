@@ -1,0 +1,29 @@
+{
+    "terraform_fmt":  true,
+    "terraform_init":  true,
+    "terraform_validate":  true,
+    "terraform_plan":  true,
+    "terraform_apply":  true,
+    "vm_provisioning_state":  "Succeeded",
+    "cloud_init_status_done":  true,
+    "nginx_active":  [
+                         "active"
+                     ],
+    "http_local_status_200":  [
+
+                              ],
+    "http_public_status_200":  true,
+    "public_content_verification_pass":  true,
+    "ssh_source_cidr_restricted":  true,
+    "public_ip":  "172.206.48.114",
+    "application_url":  "http://172.206.48.114",
+    "evidence_files":  [
+                           "architecture.png",
+                           "cloud-init-summary.txt",
+                           "http-check.txt",
+                           "http-body.txt",
+                           "plan-output.txt",
+                           "apply-output.txt",
+                           "vm-runtime-check.txt"
+                       ]
+}
