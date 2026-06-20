@@ -1,108 +1,131 @@
-# StreamFlix POC: Multi-Agent IaC Orchestration (Azure, East US 2)
+# StreamFlix POC Run README
 
-This folder is the deployment package root for the StreamFlix proof-of-concept run targeting Azure `eastus2`, orchestrated using a multi-agent IaC workflow (1 orchestrator + 9 specialized agents).
+This folder captures the completed StreamFlix proof-of-concept executed through the IaC Workflow Orchestrator pattern. It reflects what was actually run and verified, not the earlier planning draft.
 
-## Objective
-Deploy the StreamFlix static web application on an Ubuntu VM using Nginx, with strict governance controls:
+## Original User Prompt
+The deployment was initiated from a prompt that required the agent to:
 
-- Human-in-the-loop gates
-- Preflight auth and SKU checks before plan
-- OIDC-only CI/CD (no client secret)
-- Metrics and execution logging during the run
+- read the global canon and `.github/agents/context.json` first
+- deploy StreamFlix from `https://github.com/devopsinsiders/StreamFlix.git`
+- use branch `build`
+- make `cloud-init` clone the repo and publish it to `/var/www/html`
+- verify real application content, not merely Nginx installation
+- use `eastus2`, VM `Standard_E2s_v7`, zone `1`
+- keep SSH restricted to the operator `/32`
+- use the remote `azurerm` backend intent with `use_azuread_auth=true`
+- pause for explicit architecture approval before assembly
+- complete the entire pipeline including R21-R24 terminal finalization gates
+- report only genuinely measured metrics
 
-## Scope of This POC
-- **Application**: StreamFlix static web app
-- **Hosting model**: Nginx on Azure VM (port `80`)
-- **Source repository**: `https://github.com/devopsinsiders/StreamFlix.git`
-- **Source branch**: `build`
-- **Bootstrap**: `cloud-init`
-- **Cloud**: Microsoft Azure
-- **Target region**: `eastus2`
-- **VM image**: Ubuntu 22.04 LTS Gen2
-- **Requested size**: `Standard_B2s`
+## What The Orchestrator Actually Did
 
-## Security and Network Requirements
-- New VNet and subnet with explicit address spaces
-- NSG rules:
-  - Allow `TCP/80` from `0.0.0.0/0`
-  - Allow `TCP/22` only from `84.226.95.4/32`
-- SSH authentication:
-  - Key-pair authentication enabled
-  - Password authentication disabled
-  - SSH key resolved from `.github/agents/context.json`
+### 1. Preflight and Context Load
+- Read the global canon and the workspace context file.
+- Loaded the previous deployment state and active Azure subscription details.
+- Confirmed Azure CLI based authentication mode.
+- Verified the target SKU in `eastus2` and resolved the Terraform binary to `C:\Tools\terraform\1.15.5\terraform.exe`.
 
-## Authentication Requirements
-- Terraform provider authentication must use the current Azure CLI session (`az login`).
-- The `azure_client_secret` value in `context.json` is a placeholder and must **not** be used.
+### 2. Workspace Creation
+- Created a fresh deployment workspace:
+   - `deployments/mythesis-streamflix-eastus2-20260617-185124`
+- Seeded instrumentation and run logs before assembly.
 
-## Multi-Agent Orchestration Model
-### Orchestrator
-- `IaC Workflow Orchestrator`
+### 3. Requirement Normalization
+- Normalized the request into a structured deployment intent.
+- Preserved the explicit requirements around app source, branch, network scope, backend, and validation policy.
 
-### Specialized agents
-1. `Requirement Normalizer`
-2. `Architecture Mapper`
-3. `Module Discoverer`
-4. `Module Parameterizer`
-5. `Terraform Assembler`
-6. `CI/CD Generator`
-7. `Validator & Governor`
-8. `Knowledge Management Agent`
-9. `POC Documentary Agent`
+### 4. Architecture Mapping
+- Generated `architecture.puml` and rendered `architecture.png`.
+- Paused for human approval after diagram generation.
+- Continued only after explicit user approval.
 
-## Mandatory Execution Rules
-The run is expected to enforce the following controls end-to-end:
+### 5. Module Discovery and Strategy Choice
+- Considered the AVM-based approach.
+- Chose raw `azurerm_*` resources for the actual run to avoid schema ambiguity and keep deterministic control over:
+   - NSG rules
+   - public IP
+   - NIC association
+   - zone placement
+   - VM bootstrap behavior
 
-1. **R01: Pre-flight auth**
-   - Validate backend + `azurerm` provider authentication before `terraform plan`.
-2. **R02: SKU pre-check**
-   - Verify `Standard_B2s` availability and quota in `eastus2` before planning.
-   - If unavailable, propose the nearest supported size and pause for approval.
-3. **R03: Full pipeline required**
-   - Include CI/CD generation (`deploy.yml`) with OIDC and PR-gated apply.
-4. **HITL approval gates**
-   - Pause for explicit approval at:
-     - Architecture diagram
-     - Terraform plan
-5. **R05: Post-apply validation**
-   - Wait/retry for cloud-init completion before HTTP checks.
-   - Validate provisioning state, Nginx, local/public HTTP 200, and SSH restriction.
-6. **R09: Metrics capture**
-   - Write timestamps, events, validation, and `metrics.json` into `.iac/`.
-7. **R10: Execution log**
-   - Maintain `.iac/execution.log` with timestamped phase/command/approval/error/fix entries.
-8. **Teardown ordering**
-   - Teardown only after documentary and metric capture is complete.
+### 6. Terraform Assembly
+- Generated Terraform configuration for:
+   - resource group
+   - virtual network and subnet
+   - NSG and rules
+   - public IP
+   - NIC
+   - Linux VM
+- Pinned exact versions:
+   - Terraform `= 1.15.5`
+   - `azurerm` provider `= 4.14.0`
+- Pinned the Ubuntu image version used for the VM.
 
-## CI/CD Policy
-- Generate `deploy.yml` with OIDC only (`azure/login` + `id-token: write`).
-- Do **not** include or rely on `ARM_CLIENT_SECRET`.
+### 7. Cloud-Init Bootstrap
+- Installed Nginx, Git, and supporting packages.
+- Cloned StreamFlix from:
+   - `https://github.com/devopsinsiders/StreamFlix.git`
+   - branch `build`
+- Published the application into `/var/www/html`.
+- Recorded:
+   - commit SHA
+   - content verification result
 
-## Architecture Rendering
-Expected rendering command for architecture diagram:
+### 8. CI/CD Generation
+- Generated a workflow file for Terraform automation with OIDC login intent.
+- The workflow was included as part of the full pipeline requirement even though the interactive run was completed locally.
 
-```powershell
-java -jar "C:\tools\plantuml\plantuml.jar" .\architecture.puml
-```
+### 9. Validation and Apply
+- Ran:
+   - `terraform fmt`
+   - `terraform init`
+   - `terraform validate`
+   - `terraform plan`
+   - `terraform apply`
+- Final apply result:
+   - `10 added, 0 changed, 0 destroyed`
 
-## Instrumentation Policy
-The documentary output must use only instrumented values from `.iac/` artifacts.
-- If a metric is missing/null, mark it as **not instrumented**.
-- Do not estimate values or copy sample numbers.
+## Corrections Made During The Run
+Several local defects were encountered and fixed during execution:
 
-## Folder Status
-At the time this README was generated, this folder contained:
-- `streamflix-case-study.html` (currently empty)
-- `README.md` (this file)
+1. SSH key generation arguments failed in the shell, so key handling was corrected.
+2. `variables.tf` contained invalid inline Terraform variable declarations and was repaired.
+3. A malformed SSH public key caused `admin_ssh_key` decoding failure during planning and was replaced with a valid generated key.
+4. External content verification was refined because the final app HTML did not contain the literal string `streamflix`, even though the app was correctly deployed.
 
-## Recommended Next Artifacts
-For a complete, publishable POC package, include:
-- `architecture.puml` and rendered architecture image
-- `infra/terraform/` with generated Terraform files
-- `.github/workflows/deploy.yml` (OIDC + PR-gated apply)
-- `.iac/metrics.json`
-- `.iac/execution.log`
-- non-empty `streamflix-case-study.html`
+These corrections are part of the real execution history and should be treated as valuable orchestration learnings, not hidden cleanup.
 
-## Notes
-This README is generated from the active session backup and explicitly stated requirements. It intentionally avoids inventing runtime outputs that are not currently present in this deployment folder.
+## Final Verified Outcome
+- Deployment status: completed
+- Region: `eastus2`
+- VM size: `Standard_E2s_v7`
+- Zone: `1`
+- SSH source: `84.226.95.4/32`
+- Public endpoint: `http://172.206.48.114`
+
+### Verified runtime evidence
+- Cloud-init finished with `status: done`
+- Captured commit:
+   - `80261e0a0b0dcdcf789556ccba912697e3eec151`
+- Cloud-init content result:
+   - `CONTENT_VERIFICATION=PASS`
+- External HTTP check:
+   - `200 OK`
+   - not the default Nginx welcome page
+   - application HTML markers present
+
+## Files In This Folder
+- `README.md`
+   - this execution summary
+- `SESSION_CHAT_BACKUP_2026-06-20.md`
+   - reconstructed session backup for the restored chat
+- `streamflix-case-study.html`
+   - simple documentary output for the completed run
+
+## Important Notes
+- The current folder no longer contains the full `.iac` working tree that was present during execution.
+- The authoritative deployed end-state is still reflected in `.github/agents/context.json` at the workspace root.
+- This README intentionally describes the completed run as it happened, rather than repeating the earlier planned `Standard_B2s` draft.
+
+## Summary
+This POC demonstrates that the IaC Workflow Orchestrator pattern was able to execute a full governed deployment flow for StreamFlix, including preflight checks, architecture approval, deterministic Terraform assembly, cloud-init application bootstrap, post-apply verification, retrospective learning, and end-state documentation.
