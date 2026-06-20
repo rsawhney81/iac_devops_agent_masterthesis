@@ -1,0 +1,44 @@
+# ---- Large media (host externally; GitHub rejects files > 100 MB) ----
+*.mp4
+*.mov
+*.avi
+
+# ---- Secrets / credentials (NEVER commit) ----
+ssh-keys/
+**/ssh-keys/
+*.pem
+*.key
+id_ed25519
+id_ed25519.*
+id_rsa
+id_rsa.*
+*.pub
+.azure/
+**/.azure/
+*.tfvars.secret
+azureauth.json
+*.publishsettings
+
+# ---- Terraform working/state (do not commit state or providers) ----
+.terraform/
+**/.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+
+# ---- Local/OS/editor noise ----
+.DS_Store
+Thumbs.db
+*.tmp
+*.log.lock
+.vscode/
+.idea/
+
+# ---- Python (if any helper scripts) ----
+__pycache__/
+*.pyc
+.venv/
+venv/
