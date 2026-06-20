@@ -1,0 +1,78 @@
+{
+    "workspace":  {
+                      "path":  "C:\\MTProjects\\30.05.2026",
+                      "deployment_name":  "mythesis-streamflix-eastus2-20260617-185124",
+                      "status":  "deployed",
+                      "backend":  "azuread-remote",
+                      "note":  "Corrected to the successful end-state (apply completed 21:58, VM online). Supersedes the 21:01 validated-plan snapshot."
+                  },
+    "azure":  {
+                  "subscription_id":  "f0ceba0a-0f02-4940-bc12-d5bf29e55282",
+                  "tenant_id":  "701ee46b-24e8-4814-a965-75a1fa0dba56",
+                  "client_id":  "04b07795-8ddb-461a-bbee-02f9e1bf7b47",
+                  "client_secret":  null,
+                  "auth_mode":  "azure_cli_keyless",
+                  "resource_group_name":  "rg-mythesis-streamflix-20260617",
+                  "location":  "eastus2",
+                  "ssh_allowed_ip":  "84.226.95.4/32"
+              },
+    "application":  {
+                        "name":  "StreamFlix",
+                        "repository_url":  "https://github.com/devopsinsiders/StreamFlix.git",
+                        "branch":  "build",
+                        "deployment_code":  "cloud-init.yaml",
+                        "application_url":  "http://172.206.48.114",
+                        "public_ip":  "172.206.48.114"
+                    },
+    "terraform":  {
+                      "required_version":  "= 1.15.5",
+                      "binary_path":  "C:\\Tools\\terraform\\1.15.5\\terraform.exe",
+                      "provider_azurerm":  "= 4.14.0",
+                      "vm_size":  "Standard_E2s_v7",
+                      "vm_zone":  "1",
+                      "admin_username":  "azureuser",
+                      "ssh_public_key":  "",
+                      "ssh_auto_generation":  true,
+                      "encryption_at_host_enabled":  false,
+                      "apply_summary":  "Apply complete: 10 resources added, 0 changed, 0 destroyed."
+                  },
+    "modules":  {
+                    "public_ip":  "Azure/avm-res-network-publicipaddress/azurerm v0.2.1",
+                    "vnet":  "Azure/avm-res-network-virtualnetwork/azurerm v0.18.0",
+                    "nsg":  "Azure/avm-res-network-networksecuritygroup/azurerm v0.5.1",
+                    "subnet":  "Azure/avm-res-network-virtualnetwork/azurerm//modules/subnet v0.18.0",
+                    "vm":  "Azure/avm-res-compute-virtualmachine/azurerm v0.21.0"
+                },
+    "naming":  {
+                   "resource_prefix":  "mythesis-streamflix-",
+                   "default_tags":  {
+                                        "Project":  "MasterThesis",
+                                        "Environment":  "Dev",
+                                        "Region":  "eastus2",
+                                        "Workload":  "StreamFlix",
+                                        "ManagedBy":  "Terraform",
+                                        "CreatedDate":  "2026-06-16"
+                                    }
+               },
+    "backend":  {
+                    "type":  "azurerm",
+                    "use_azuread_auth":  true,
+                    "storage_account_name":  "tfs959443weu",
+                    "container_name":  "tfstate",
+                    "resource_group_name":  "rg-tfstate",
+                    "key":  "streamflix-eastus2-20260617-185124.tfstate",
+                    "required_role":  "Storage Blob Data Contributor",
+                    "note":  "Remote state is the intended design. The live run fell back to LOCAL state after a 403 AuthorizationPermissionMismatch because the identity lacked Storage Blob Data Contributor on the storage account. Grant that role and remote state works; do not bake the local-state fallback in as the default."
+                },
+    "latest_validation":  {
+                              "terraform_fmt":  true,
+                              "terraform_init":  true,
+                              "terraform_validate":  true,
+                              "terraform_plan":  true,
+                              "terraform_apply":  true,
+                              "warnings":  [
+                                               "azurerm skip_provider_registration is deprecated",
+                                               "AVM vm module emits deprecated vm_agent_platform_updates_enabled warnings"
+                                           ]
+                          }
+}

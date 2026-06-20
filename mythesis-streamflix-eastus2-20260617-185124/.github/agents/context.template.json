@@ -1,0 +1,17 @@
+{
+    "azure_subscription_id":  "f0ceba0a-0f02-4940-bc12-d5bf29e55282",
+    "azure_tenant_id":  "701ee46b-24e8-4814-a965-75a1fa0dba56",
+    "azure_client_id":  "Y1b503556-98fd-4001-903f-11cb03488402",
+    "azure_client_secret":  "\u003cSET_IN_SECRET_STORE\u003e",
+    "application_deployment_code":  "# Your application deployment script or cloud-init content here\n# Example: sudo apt update \u0026\u0026 sudo apt install -y nginx",
+    "terraform_backend_storage_account_name":  "tfs959443weu",
+    "terraform_backend_container_name":  "tfstate",
+    "terraform_backend_resource_group_name":  "rg-tfstate",
+    "ssh_public_key":  "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDANA6Km/eYaCUNlzkFg2S6nCmg2kDf1SXkP65XZQsBXnY0kYXKK+LCYlPx8aNatpPb+0N9HMrP/SOSpsdUROfrHua+d/lVGHbV/3Kb1TGsSgwGlNRo4XLirylqJ67xXeVf9NisdYkHDLrjlv1DKYT4rG2+yJ87Yo0hPpHOK/esOuuNzeSYFvdE//t70p5yEZyE2vh06UprChrxrr8j4RWv6hORDEkn6GRMw3B9lP38Tzhr/F+GpBbQjNL49apOQtmODqmZ4c9V0gwWwab0XmmfNBT48JlgnairtSJ2n3Q+NdE+YMDnrjBSW2lX7Hr2sx5MSmgYZS9zWmZgQmfhIcOtmVcZYFTB7bAEF/L0MfJBmgay6XKFt2ZxKBw50d1NKsXjhidFFmegJxTlCl5u3xgZ5N6pYm5pJsNNPdug5XMUdkV0xmZxd4rya78/zbw6RyJ5jhpRaKkRU8G2sA6u6nG8T8fquhMjSt+l+DzpUGwKVjbzOwE+XtbbfxQAoLI9M0gdwDAvtv/r4UPJEbhA7psdrj87ITkudtp+gO46ZXKKTwgwC6OJzBuK7hs+9EMIr74HvCQbcuaqAOOCBnfGY/5Tba3jkSx/c+njVfNztC5DnQqyuLOtVqEiyVusPONI4F10HSZeRHOViw4CcVOAg8L/x/XrMCubkjpD8Fu4ztp5kQ== rakeshsawhney@DESKTOP-TN2E5E8",
+    "resource_naming_prefix":  "mythesis-",
+    "default_tags":  {
+                         "Project":  "MasterThesis",
+                         "Environment":  "Dev"
+                     },
+    "github_repository_name":  "rsawhney81/MasterThesisProject"
+}
